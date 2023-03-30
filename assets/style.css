@@ -1,0 +1,13 @@
+.header {
+  background: #1616ea;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+
+}
+.search-result {
+  background: #cfcfca;
+display: flex;
+justify-content: flex-start;
+
+}

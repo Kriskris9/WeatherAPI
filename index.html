@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "assets/style.css">
+    <title>Document</title>
+</head>
+<body>
+<header class="header"> 
+    <h1> Weather Dashboard</h1>    
+</header>
+<aside class="aside">
+    <h2>Search for a city</h2>
+    <form>
+        <input id="city" type="text" name="city" placeholder="City">
+        <input id = "search" type="submit" value="Search">
+    </form>
+    <div class="search-history">
+       <ul class="history">
+        
+       </ul> 
+    </div>
+</aside>
+<section class="search-result">
+    <div class="recent-search">
+    </div>
+</section>
+<section class="forecast">
+    <h2>5-Day Forecast</h2>
+    <div class="forecast-result"></div>
+</section>
+<script src="script.js"></script>
+</body>
+</html>
