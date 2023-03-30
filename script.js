@@ -4,6 +4,7 @@ var recentSearch = document.querySelector(".recent-search");
 var searchResult = document.querySelector(".search-result");
 var city = document.getElementById("city");
 var searchHistory = [];
+var forcast = document.querySelector(".forcast");
 
 
 
@@ -13,7 +14,7 @@ function cityWeather(event) {
     console.log(city.value);
     event.preventDefault();
     showRecentSearch();
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city.value}&units=imperial&appid=d0e531028fc8f0dc428b9a2ef2bcbf24&cnt=5`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city.value}&units=imperial&appid=d0e531028fc8f0dc428b9a2ef2bcbf24`)
         .then(function (response) {
             return response.json();
         })
@@ -29,7 +30,7 @@ function cityWeather(event) {
             var lat = data.city.coord.lat;
             var lon = data.city.coord.lon;
 
-            fiveDay(lat,lon)
+            fiveDay(lat, lon);
             displayWeatherData(cityName, date, temp, humidity, windSpeed, icon);
 
 
@@ -79,12 +80,43 @@ function fiveDay(lat, lon) {
             console.log(response);
         })
         .then(function (data) {
-            console.log(data);
+              console.log(data.list.length);
+              for(let i = 0; i < data.list.length; i+=8) {
+               var time= data.list[i].dt_txt;
+              console.log(time);
+
+
+              var fiveDayDate = new Date(data.list[i].dt * 1000).toLocaleDateString();
+              var citiesName = data.city.name;
+              var fiveDayTemp = data.list[i].main.temp;
+              var fiveDayHumidity = data.list[i].main.humidity;
+              var fiveDayWindSpeed = data.list[i].wind.speed;
+              var fiveDayIcon = data.list[i].weather[i].icon;
+              var fiveDayDateText = data.list[i].dt_txt;
+              var lat = data.city.coord.lat;
+              var lon = data.city.coord.lon;
+
+              displayFiveDayWeather(citiesName, fiveDayDate, fiveDayTemp, fiveDayHumidity, fiveDayWindSpeed, fiveDayIcon);
+              }
+             
         })
 
         .catch(function error(error) {
             console.error(error);
         });
+}
+
+
+function displayFiveDayWeather(citiesName, fiveDayDate, fiveDayTemp, fiveDayHumidity, fiveDayWindSpeed, fiveDayIcon) {
+    var forcastResult = document.querySelector('.forecast-result');
+    var fiveDayIconUrl = `https://openweathermap.org/img/w/${fiveDayIcon}.png`
+    forcastResult.innerHTML = `
+         <h2>${citiesName} (${fiveDayDate})</h2> <img id="icon" src="${fiveDayIconUrl}" alt="Weather icon">
+         <p>Temperature: ${fiveDayTemp} &deg;F</p>
+         <p>Humidity: ${fiveDayHumidity}%</p>
+         <p>Wind Speed: ${fiveDayWindSpeed} MPH</p>
+       `;
+    forcast.appendChild(forcastResult);
 
 }
 
