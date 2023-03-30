@@ -58,18 +58,21 @@ function displayWeatherData(cityName, date, temp, humidity, windSpeed, icon) {
 
 }
 
-
-
 function showRecentSearch() {
     var history = document.querySelector('.history');
     var cities = document.createElement('li');
     cities.textContent = city.value;
-    history.appendChild(cities);
+    var button = document.createElement('button');
+    button.appendChild(cities);
+    button.addEventListener('click', function retrievePreviousWeatherData() {
+   
+    });
+    history.appendChild(button);
     searchHistory.push(city.value);
     localStorage.setItem('city', searchHistory);
 
-
 }
+
 
 
 function fiveDay(lat, lon) {
@@ -107,15 +110,16 @@ function fiveDay(lat, lon) {
 }
 
 
-function displayFiveDayWeather(citiesName, fiveDayDate, fiveDayTemp, fiveDayHumidity, fiveDayWindSpeed, fiveDayIcon) {
+function displayFiveDayWeather(citiesName, fiveDayDateText, fiveDayTemp, fiveDayHumidity, fiveDayWindSpeed, fiveDayIcon) {
     var forcastResult = document.querySelector('.forecast-result');
     var fiveDayIconUrl = `https://openweathermap.org/img/w/${fiveDayIcon}.png`
     forcastResult.innerHTML = `
-         <h2>${citiesName} (${fiveDayDate})</h2> <img id="icon" src="${fiveDayIconUrl}" alt="Weather icon">
+         <h2>(${fiveDayDateText})</h2> <img id="icon" src="${fiveDayIconUrl}" alt="Weather icon">
          <p>Temperature: ${fiveDayTemp} &deg;F</p>
          <p>Humidity: ${fiveDayHumidity}%</p>
          <p>Wind Speed: ${fiveDayWindSpeed} MPH</p>
-       `;
+        `
+       ;
     forcast.appendChild(forcastResult);
 
 }
