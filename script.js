@@ -19,7 +19,7 @@ function cityWeather(event) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            console.log(icon);
             var date = new Date(data.list[0].dt * 1000).toLocaleDateString();
             var cityName = data.city.name;
             var temp = data.list[0].main.temp;
@@ -29,6 +29,10 @@ function cityWeather(event) {
             var dateText = data.list[0].dt_txt;
             var lat = data.city.coord.lat;
             var lon = data.city.coord.lon;
+
+
+
+
 
             fiveDay(lat, lon);
             displayWeatherData(cityName, date, temp, humidity, windSpeed, icon);
@@ -83,23 +87,23 @@ function fiveDay(lat, lon) {
             console.log(response);
         })
         .then(function (data) {
-              console.log(data.list.length);
-              for(let i = 0; i < data.list.length; i+=8) {
-               var time= data.list[i].dt_txt;
+            var forcastResult = document.querySelector('.forecast-result');
+            forcastResult.innerHTML = '';
+              for(let i = 0; i += 7; i++ ) {
+               var time= data.list[20].dt_txt;
               console.log(time);
-
 
               var fiveDayDate = new Date(data.list[i].dt * 1000).toLocaleDateString();
               var citiesName = data.city.name;
               var fiveDayTemp = data.list[i].main.temp;
               var fiveDayHumidity = data.list[i].main.humidity;
               var fiveDayWindSpeed = data.list[i].wind.speed;
-              var fiveDayIcon = data.list[i].weather[i].icon;
+              var fiveDayIcon = data.list[i].weather[0].icon;
               var fiveDayDateText = data.list[i].dt_txt;
               var lat = data.city.coord.lat;
               var lon = data.city.coord.lon;
 
-              displayFiveDayWeather(citiesName, fiveDayDate, fiveDayTemp, fiveDayHumidity, fiveDayWindSpeed, fiveDayIcon);
+              appendCard(citiesName, fiveDayDate, fiveDayTemp, fiveDayHumidity, fiveDayWindSpeed, fiveDayIcon);
               }
              
         })
@@ -110,17 +114,19 @@ function fiveDay(lat, lon) {
 }
 
 
-function displayFiveDayWeather(citiesName, fiveDayDateText, fiveDayTemp, fiveDayHumidity, fiveDayWindSpeed, fiveDayIcon) {
+function appendCard(citiesName, fiveDayDateText, fiveDayTemp, fiveDayHumidity, fiveDayWindSpeed, fiveDayIcon) {
+
+
     var forcastResult = document.querySelector('.forecast-result');
     var fiveDayIconUrl = `https://openweathermap.org/img/w/${fiveDayIcon}.png`
-    forcastResult.innerHTML = `
-         <h2>(${fiveDayDateText})</h2> <img id="icon" src="${fiveDayIconUrl}" alt="Weather icon">
+    var day=document.createElement('section');
+    day.innerHTML = `<h2>(${fiveDayDateText})</h2> <img id="icon" src="${fiveDayIconUrl}" alt="Weather icon">
          <p>Temperature: ${fiveDayTemp} &deg;F</p>
          <p>Humidity: ${fiveDayHumidity}%</p>
          <p>Wind Speed: ${fiveDayWindSpeed} MPH</p>
         `
-       ;
-    forcast.appendChild(forcastResult);
+    ;
+    forcastResult.appendChild(day);
+
 
 }
-
