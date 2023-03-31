@@ -19,7 +19,7 @@ function cityWeather(event) {
             return response.json();
         })
         .then(function (data) {
-            console.log(icon);
+    
             var date = new Date(data.list[0].dt * 1000).toLocaleDateString();
             var cityName = data.city.name;
             var temp = data.list[0].main.temp;
@@ -30,13 +30,8 @@ function cityWeather(event) {
             var lat = data.city.coord.lat;
             var lon = data.city.coord.lon;
 
-
-
-
-
             fiveDay(lat, lon);
             displayWeatherData(cityName, date, temp, humidity, windSpeed, icon);
-
 
         })
 
@@ -47,7 +42,7 @@ function cityWeather(event) {
 }
 
 
-search.addEventListener("click", cityWeather)
+search.addEventListener("click", cityWeather);
 
 function displayWeatherData(cityName, date, temp, humidity, windSpeed, icon) {
     var currentWeatherEl = document.querySelector('.recent-search');
@@ -75,13 +70,15 @@ function showRecentSearch() {
     searchHistory.push(city.value);
     localStorage.setItem('city', searchHistory);
 
+var previousSearch = localStorage.getItem('city', searchHistory );
+console.log(previousSearch);
+    
+  
 }
-
-
 
 function fiveDay(lat, lon) {
     
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=d0e531028fc8f0dc428b9a2ef2bcbf24`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=d0e531028fc8f0dc428b9a2ef2bcbf24`)
         .then(function (response) {
             return response.json();
             console.log(response);
@@ -115,8 +112,6 @@ function fiveDay(lat, lon) {
 
 
 function appendCard(citiesName, fiveDayDateText, fiveDayTemp, fiveDayHumidity, fiveDayWindSpeed, fiveDayIcon) {
-
-
     var forcastResult = document.querySelector('.forecast-result');
     var fiveDayIconUrl = `https://openweathermap.org/img/w/${fiveDayIcon}.png`
     var day=document.createElement('section');
@@ -124,9 +119,9 @@ function appendCard(citiesName, fiveDayDateText, fiveDayTemp, fiveDayHumidity, f
          <p>Temperature: ${fiveDayTemp} &deg;F</p>
          <p>Humidity: ${fiveDayHumidity}%</p>
          <p>Wind Speed: ${fiveDayWindSpeed} MPH</p>
-        `
-    ;
+        `;
     forcastResult.appendChild(day);
-
-
 }
+
+
+ 

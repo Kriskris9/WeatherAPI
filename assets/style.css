@@ -19,3 +19,6 @@ justify-content: flex-start;
 section {
   background-color: #1515b1;
 }
+ul {
+  list-style-type: none;
+}
