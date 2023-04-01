@@ -1,5 +1,5 @@
 const key = 'd0e531028fc8f0dc428b9a2ef2bcbf24';
-var search = document.querySelector("#search");
+var search = document.getElementById("search");
 var recentSearch = document.querySelector(".recent-search");
 var searchResult = document.querySelector(".search-result");
 var city = document.getElementById("city");
@@ -63,9 +63,15 @@ function showRecentSearch() {
     cities.textContent = city.value;
     var button = document.createElement('button');
     button.appendChild(cities);
-    button.addEventListener('click', function retrievePreviousWeatherData() {
-   
-    });
+    button.addEventListener('click', function (e) {
+        var city = e.target.textContent;
+      
+        let searchBar = document.getElementById("city");  
+        searchBar.value = city;
+        search.click();
+    }) 
+    
+
     history.appendChild(button);
     searchHistory.push(city.value);
     localStorage.setItem('city', JSON.stringify(searchHistory));
