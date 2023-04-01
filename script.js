@@ -68,12 +68,8 @@ function showRecentSearch() {
     });
     history.appendChild(button);
     searchHistory.push(city.value);
-    localStorage.setItem('city', searchHistory);
+    localStorage.setItem('city', JSON.stringify(searchHistory));
 
-var previousSearch = localStorage.getItem('city', searchHistory );
-console.log(previousSearch);
-    
-  
 }
 
 function fiveDay(lat, lon) {
@@ -122,6 +118,3 @@ function appendCard(citiesName, fiveDayDateText, fiveDayTemp, fiveDayHumidity, f
         `;
     forcastResult.appendChild(day);
 }
-
-
- 

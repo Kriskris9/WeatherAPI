@@ -15,10 +15,13 @@ justify-content: flex-start;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background: #1616ea;
 }
-section {
-  background-color: #1515b1;
-}
+
 ul {
-  list-style-type: none;
+  list-style: none;
+}
+
+button {
+  padding:10px;
 }
