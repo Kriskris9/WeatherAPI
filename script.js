@@ -71,10 +71,11 @@ function showRecentSearch() {
         search.click();
     }) 
     
-
+    if (!searchHistory.includes(city.value)) {
     history.appendChild(button);
     searchHistory.push(city.value);
     localStorage.setItem('city', JSON.stringify(searchHistory));
+    }
 
 }
 
