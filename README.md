@@ -2,18 +2,14 @@
 ## Description
 
 This is a weather dashboard. If you would like to find out what the current weather for a city is, you can just type the city name into the search bar. Once you click the search button, the screen will populate with information on the current weather for the day and with information on what the weather will be like for the next five days. If you would like to go back to see a recently searched item, click on the button in the search history and it will take you back to the weather information to that city!
+
 ## Installation
 
 N/A
 
 ## Usage
 
-To use this work day scheduler, you can click on one of the time slots and enter any important event or meetings for that time. To save the event, you can click on the save icon button. During the work day, you can tell what time it is based on the color of the slot. Present time slot will be red, past time slot will be grey, and future time slot will be green. You can open and close the application and you will still be able to see the events within each time slot. 
-
-![alt](./Assets/screenshots/Screenshot%202023-03-20%20at%208.31.59%20PM.png)
-
-![alt](./Assets/screenshots/Screenshot%202023-03-20%20at%208.31.46%20PM.png)
-
+To use this website, type in a city in the search bar and click submit. The screen will display the current forecast for the city you searched and will also provide you with the forecast for the next five days. Each time you type in a city, it will be saved under the search bar. So, if you would like to view the weather information for a city that you recently searched, click on the city and you will be able to see the weather information for that city again. 
 ## Credits
 
 I would like to give credit to my TA shawn and my friend Tony Murmman for helping me complete this homework. 
@@ -25,6 +21,6 @@ Please refer to the LICENSE in the repo.
 
 ## Deployed
 
-https://kriskris9.github.io/Work-Day-Scheduler/
+
 
 
