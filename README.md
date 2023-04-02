@@ -19,6 +19,10 @@ Please refer to the LICENSE in the repo.
 
 ## Assets
 
+![alt](./assets/screenshots/1.png)
+![alt](/assets/screenshots/2.png)
+![alt](./assets/screenshots/3.png)
+
 ## Deployed
 
 https://kriskris9.github.io/WeatherAPI/
